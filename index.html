@@ -194,31 +194,16 @@ input:focus,
 
     <script>
          document.getElementById("registrationForm").addEventListener("submit", function(event) {
+             document.getElementById("registrationForm").addEventListener("submit", function(event) {
         let formIsValid = true;
-
-        // Reset previous highlights (if any)
         document.querySelectorAll('.form-section input, .form-section select, .form-section textarea').forEach(function(field) {
-            field.style.borderColor = ""; // Reset border color
-        });
-
-        // 1. Validate the phone number field (using a simple regex)
-        var phoneField = document.getElementById("phone");
-        var phonePattern = /^\+?\d{10,15}$/;  // Phone number format: optional "+" followed by 10 to 15 digits
-        
-        if (!phoneField.value.match(phonePattern)) {
-            formIsValid = false;
-            phoneField.style.borderColor = "red"; // Highlight the phone number field
-            alert("Please enter a valid phone number. Format: +1234567890");
-        }
-
-        // 2. Validate that at least one checkbox is selected for shifts
+            field.style.borderColor = ""; 
+        });   
         var shiftCheckboxes = document.querySelectorAll("input[name='shift[]']:checked");
         if (shiftCheckboxes.length === 0) {
             formIsValid = false;
             alert("Please select at least one volunteer shift.");
         }
-
-        // If the form is invalid, prevent submission
         if (!formIsValid) {
             event.preventDefault();
         }
